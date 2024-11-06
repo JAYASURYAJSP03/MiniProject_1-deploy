@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('/img.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+        }
+
+        /* Transparent background for better readability */
+        .bg-opacity {
+            background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity as needed */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #ddd;
+            font-size: 0.9rem;
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Slightly opaque background */
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="bg-opacity text-center p-4">
+        <h2>Employee Details</h2>
+        <hr>
+        <form style="width:60%" action="#" th:object="${employee}" method="POST">
+            <label>Employee ID:</label>
+            <input type="text" th:field="*{employeeId}" placeholder="employee ID"
+                   class=" mb-4 col-4"  readonly/>
+            <br>
+            <label>Employee FirstName:</label>
+            <input type="text" th:field="*{employeeFirstName}" placeholder="employee FirstName"
+                   class=" mb-4 col-4"  readonly/><br>
+            <label>Employee LastName:</label>
+            <input type="text" th:field="*{employeeLastName}" placeholder="employee LastName"
+                   class=" mb-4 col-4"  readonly/><br>
+            <label>Employee Email ID:</label>
+            <input type="email" th:field="*{employeeEmail}" placeholder="employee email"
+                   class=" mb-4 col-4"  readonly/><br>
+            <label>Employee Location:</label>
+            <input type="text" th:field="*{employeeLocation}" placeholder="employee location"
+                   class=" mb-4 col-4"  readonly/>
+        </form>
+        <hr>
+
+
+        <a th:href="@{/homePage}" class="btn btn-success btn-sm mb-3">Back to HomePage</a>
+
+    </div>
+
+
+</div>
+<hr>
+<div class="footer">
+    &copy; 2024 JSP. All rights reserved.
+</div>
+</body>
+</html>

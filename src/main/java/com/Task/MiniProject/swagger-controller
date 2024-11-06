@@ -1,0 +1,40 @@
+package com.Task.MiniProject.Controller;
+
+import com.Task.MiniProject.Dto.Employee;
+import com.Task.MiniProject.Service.EmoployeeService;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@AllArgsConstructor
+public class EmployeeController {
+    private EmoployeeService emoployeeService;
+    //    private EmployeeRepository employeeRepository;
+    @GetMapping("getAllEmployeeDetails")
+    public ResponseEntity<List<Employee>> getAllEmployeeDetails(){
+        return new ResponseEntity<>(emoployeeService.getAllEmployeeDetails(), HttpStatus.OK);
+    }
+    @GetMapping("getEmployeeDetailsById/{id}")
+    public ResponseEntity<Employee> getEmployeeDetailsById(@PathVariable Long id){
+        return new ResponseEntity<>(emoployeeService.getEmployeeDetailsById(id),HttpStatus.OK);
+    }
+    @PostMapping("addEmployeeDetails")
+    public ResponseEntity<Employee> addEmployeeDetails(@RequestBody Employee employeeDto){
+        return new ResponseEntity<>(emoployeeService.addEmployeeDetails(employeeDto),HttpStatus.OK);
+    }
+    @PutMapping("updateEmployeeDetails/{id}")
+    public ResponseEntity<Employee> updateEmployeeDetails(@RequestBody Employee employeeDto,@PathVariable Long id){
+        return new ResponseEntity<>(emoployeeService.updateEmployeeDetails(employeeDto,id),HttpStatus.OK);
+    }
+
+    @DeleteMapping("deleteEmployeeDetails/{id}")
+    public void deleteEmployeeDetails(@PathVariable Long  id){
+        emoployeeService.deleteEmployeeDetails(id);
+//        employeeRepository.deleteById(id);
+    }
+
+}
